@@ -1,34 +1,20 @@
 package ru.lazer.wsclient.pojo;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+public class AggTradeFlinkPojo {
+    public String e;
+    public long E;
+    public String s;
+    public int a;
+    public double p;
+    public double q;
+    public int f;
+    public int l;
+    public long T;
+    public boolean m;
 
-public class AggTrade {
+    public AggTradeFlinkPojo() {}
 
-    @JsonProperty("e")
-    private String e; // Event type
-    @JsonProperty("E")
-    private long E;   // Event time
-    @JsonProperty("s")
-    private String s; // Symbol
-    @JsonProperty("a")
-    private int a;    // Aggregate trade ID
-    @JsonProperty("p")
-    private double p; // Price
-    @JsonProperty("q")
-    private double q; // Quantity
-    @JsonProperty("f")
-    private int f;    // First trade ID
-    @JsonProperty("l")
-    private int l;    // Last trade ID
-    @JsonProperty("T")
-    private long T;   // Trade time
-    @JsonProperty("m")
-    private boolean m; // Is buyer the market maker
-
-    public AggTrade() {
-    }
-
-    public AggTrade(String e, long E, String s, int a, double p, double q, int f, int l, long T, boolean m) {
+    public AggTradeFlinkPojo(String e, long E, String s, int a, double p, double q, int f, int l, long T, boolean m) {
         this.e = e;
         this.E = E;
         this.s = s;

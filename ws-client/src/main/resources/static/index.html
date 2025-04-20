@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trade Stream</title>
+</head>
+<body>
+<h2> Trade Stream</h2>
+<pre id="log"></pre>
+
+<script>
+    const socket = new WebSocket("ws://localhost:8083/ws/trade");
+    const log = document.getElementById("log");
+
+    socket.onmessage = function(event) {
+        console.log("Сообщение с сервера:", event.data);
+        log.textContent += event.data + "\n";
+    };
+
+    socket.onopen = () => console.log("WebSocket открыт");
+    socket.onerror = (err) => console.error("Ошибка WebSocket:", err);
+</script>
+</body>
+</html>
