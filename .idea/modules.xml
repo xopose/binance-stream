@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/binance-stream.iml" filepath="$PROJECT_DIR$/.idea/binance-stream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ws-client/ws-client.iml" filepath="$PROJECT_DIR$/ws-client/ws-client.iml" />
     </modules>
   </component>
 </project>

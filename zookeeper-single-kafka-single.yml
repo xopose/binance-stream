@@ -38,8 +38,6 @@ services:
     depends_on:
       - zoo1
 
-
-
   kafka-ui:
     image: provectuslabs/kafka-ui
     ports:
@@ -58,8 +56,28 @@ services:
       - "8083:8080"
     depends_on:
       - kafka1
+      - postgres
     environment:
       - SERVER_PORT= 8080
 
+  postgres:
+    image: postgres:17.5
+    environment:
+      POSTGRES_DB: "binance-db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ../2. Init Database:/docker-entrypoint-initdb.d
+      - binance-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
 
+volumes:
+  binance-data:
 

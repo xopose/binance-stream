@@ -39,7 +39,6 @@ public class MacdCalculator extends ProcessWindowFunction<AggTradeFlinkPojo, Tup
             Map<String, Object> jsonMap = new HashMap<>();
             jsonMap.put("timestamp", timestamp);
             jsonMap.put("value", macd);
-
             String json = objectMapper.writeValueAsString(jsonMap);
             out.collect(Tuple2.of("MACD", json));
         } catch (Exception e) {

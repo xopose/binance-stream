@@ -75,7 +75,6 @@ public class FlinkKafkaIndicatorsProcessor {
                                         .withTimestampAssigner((event, ts) -> event.getETime())
                         );
 
-
                 aggTrades
                         .keyBy(AggTradeFlinkPojo::getS)
                         .window(SlidingProcessingTimeWindows.of(Time.seconds(30), Time.seconds(15)))

@@ -6,6 +6,7 @@ import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 import ru.lazer.wsclient.pojo.AggTradeFlinkPojo;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ru.lazer.wsclient.repository.BinanceDataRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ import java.util.Map;
 public class RsiCalculator extends ProcessWindowFunction<AggTradeFlinkPojo, Tuple2<String, String>, String, TimeWindow> {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
+
 
     @Override
     public void process(String symbol, Context context, Iterable<AggTradeFlinkPojo> elements, Collector<Tuple2<String, String>> out) {
@@ -44,7 +46,6 @@ public class RsiCalculator extends ProcessWindowFunction<AggTradeFlinkPojo, Tupl
             Map<String, Object> jsonMap = new HashMap<>();
             jsonMap.put("timestamp", timestamp);
             jsonMap.put("value", rsi);
-
             String json = objectMapper.writeValueAsString(jsonMap);
             out.collect(Tuple2.of("RSI", json));
         } catch (Exception e) {
